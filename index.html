@@ -327,8 +327,24 @@
   </section>
 
   <!-- How It Works -->
-  <section id="how-it-works" class="py-24 md:py-32 px-6 md:px-12 border-b border-white/5">
-    <div class="max-w-[1000px] mx-auto">
+  <section id="how-it-works" class="relative py-24 md:py-32 px-6 md:px-12 bg-surface-container-lowest overflow-hidden">
+    <!-- Blueprint-grid pattern with radial mask so lines fade at section edges -->
+    <div
+      class="absolute inset-0 opacity-[0.14] pointer-events-none"
+      aria-hidden="true"
+      style="
+        background-image:
+          linear-gradient(to right, #fff 1px, transparent 1px),
+          linear-gradient(to bottom, #fff 1px, transparent 1px);
+        background-size: 80px 80px;
+        -webkit-mask-image: radial-gradient(ellipse 55% 55% at center, #000 0%, transparent 85%);
+                mask-image: radial-gradient(ellipse 55% 55% at center, #000 0%, transparent 85%);
+      "
+    ></div>
+    <!-- Soft corner vignette for depth -->
+    <div class="absolute -bottom-24 -right-24 w-[600px] h-[400px] bg-primary/[0.03] rounded-full blur-[160px] pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative max-w-[1000px] mx-auto">
       <div class="text-center mb-20">
         <div class="font-mono text-[11px] tracking-[0.3em] text-primary uppercase mb-5">// How It Works</div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-headline font-black tracking-tighter leading-[0.95] mb-5">Getting started</h2>
@@ -370,8 +386,22 @@
   </section>
 
   <!-- Pricing -->
-  <section id="pricing" class="py-12 md:py-16 px-6 md:px-12 border-b border-white/5 bg-surface-container-lowest">
-    <div class="max-w-[1400px] mx-auto">
+  <section id="pricing" class="relative py-12 md:py-16 px-6 md:px-12 bg-surface-container-low overflow-hidden">
+    <!-- Dot pattern with radial mask so it fades at the edges -->
+    <div
+      class="absolute inset-0 opacity-[0.12] pointer-events-none"
+      aria-hidden="true"
+      style="
+        background-image: radial-gradient(#fff 1px, transparent 1px);
+        background-size: 32px 32px;
+        -webkit-mask-image: radial-gradient(ellipse 55% 55% at center, #000 0%, transparent 85%);
+                mask-image: radial-gradient(ellipse 55% 55% at center, #000 0%, transparent 85%);
+      "
+    ></div>
+    <!-- Centered radial primary glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/[0.04] rounded-full blur-[140px] pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative max-w-[1400px] mx-auto">
       <div class="text-center mb-8">
         <div class="font-mono text-[11px] tracking-[0.3em] text-primary uppercase mb-3">// Pricing</div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-headline font-black tracking-tighter leading-[0.95]">Pricing for any size</h2>
