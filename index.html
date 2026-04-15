@@ -207,24 +207,32 @@
   </section>
 
   <!-- Stats -->
-  <section class="py-16 md:py-20 px-6 md:px-12 border-b border-white/5 bg-surface-container-lowest">
-    <div class="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
+  <section class="relative py-16 md:py-20 px-6 md:px-12 border-b border-white/5 bg-surface-container-lowest overflow-hidden">
+    <!-- Background video -->
+    <video autoplay muted loop playsinline aria-hidden="true" class="absolute inset-0 w-full h-full object-cover z-0">
+      <source src="assets/videos/worship-01.mp4" type="video/mp4">
+    </video>
+    <!-- Darken overlay (theme tint) -->
+    <div class="absolute inset-0 bg-black/75 z-0" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-surface/60 via-transparent to-surface/60 z-0" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
       <div class="text-center md:text-left fade-in-up">
-        <div class="text-4xl md:text-5xl font-headline font-black text-primary tracking-tighter mb-2">2-4s</div>
+        <div class="text-4xl md:text-5xl font-headline font-black text-primary tracking-tighter mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">2-4s</div>
         <div class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Avg Response</div>
       </div>
       <div class="text-center md:text-left fade-in-up" data-delay="100">
-        <div class="text-4xl md:text-5xl font-headline font-black text-primary tracking-tighter mb-2">
+        <div class="text-4xl md:text-5xl font-headline font-black text-primary tracking-tighter mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
           <span data-count-to="5000" data-count-suffix="+">0+</span>
         </div>
         <div class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Product Manuals</div>
       </div>
       <div class="text-center md:text-left fade-in-up" data-delay="200">
-        <div class="text-4xl md:text-5xl font-headline font-black text-primary tracking-tighter mb-2">24/7</div>
+        <div class="text-4xl md:text-5xl font-headline font-black text-primary tracking-tighter mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">24/7</div>
         <div class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Availability</div>
       </div>
       <div class="text-center md:text-left fade-in-up" data-delay="300">
-        <div class="text-4xl md:text-5xl font-headline font-black text-primary tracking-tighter mb-2">
+        <div class="text-4xl md:text-5xl font-headline font-black text-primary tracking-tighter mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
           <span data-count-to="100" data-count-suffix="%">0%</span>
         </div>
         <div class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Expert Backed</div>
@@ -453,8 +461,7 @@
             <span class="text-lg md:text-xl font-headline font-bold pr-6">How does AVL Copilot know about my specific equipment?</span>
             <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
           </summary>
-          <!-- TODO: replace placeholder answer -->
-          <div class="pb-6 text-on-surface-variant leading-relaxed">TODO</div>
+          <div class="pb-6 text-on-surface-variant leading-relaxed">We've indexed over 5,000 product manuals from major AVL manufacturers: Yamaha, Allen &amp; Heath, Shure, ETC, Chamsys, Resolume, and many more. Tell the AI your make and model and it pulls from the relevant documentation. Don't know the model? Upload a photo of the equipment label and it figures it out.</div>
         </details>
         <!-- Q2 -->
         <details class="faq-item border-t border-white/10 group">
@@ -462,8 +469,7 @@
             <span class="text-lg md:text-xl font-headline font-bold pr-6">Can I use it during a live event?</span>
             <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
           </summary>
-          <!-- TODO: replace placeholder answer -->
-          <div class="pb-6 text-on-surface-variant leading-relaxed">TODO</div>
+          <div class="pb-6 text-on-surface-variant leading-relaxed">Yes. Response times average 2 to 4 seconds, fast enough to use mid-show. Pull it up on your phone at FOH, run multiple troubleshooting threads at once, and switch between issues without losing context. Built for the pace of live work.</div>
         </details>
         <!-- Q3 -->
         <details class="faq-item border-t border-white/10 group">
@@ -471,8 +477,7 @@
             <span class="text-lg md:text-xl font-headline font-bold pr-6">What happens if the AI can't solve my problem?</span>
             <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
           </summary>
-          <!-- TODO: replace placeholder answer -->
-          <div class="pb-6 text-on-surface-variant leading-relaxed">TODO</div>
+          <div class="pb-6 text-on-surface-variant leading-relaxed">Hit the escalate button and your conversation routes to a human at Maybeck. They get the full thread context, so you don't have to repeat yourself. No tier walls or scripted callback queues.</div>
         </details>
         <!-- Q4 -->
         <details class="faq-item border-t border-white/10 group">
@@ -480,8 +485,7 @@
             <span class="text-lg md:text-xl font-headline font-bold pr-6">Is my conversation history private?</span>
             <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
           </summary>
-          <!-- TODO: replace placeholder answer -->
-          <div class="pb-6 text-on-surface-variant leading-relaxed">TODO</div>
+          <div class="pb-6 text-on-surface-variant leading-relaxed">Your conversations are tied to your account and not shared with other users. Thumbs-up/down ratings help us improve the model, but individual chat content isn't sold or shared with third parties. The manufacturer documentation we index is publicly available material.</div>
         </details>
         <!-- Q5 -->
         <details class="faq-item border-t border-white/10 group">
@@ -489,8 +493,7 @@
             <span class="text-lg md:text-xl font-headline font-bold pr-6">How is this different from Googling product manuals?</span>
             <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
           </summary>
-          <!-- TODO: replace placeholder answer -->
-          <div class="pb-6 text-on-surface-variant leading-relaxed">TODO</div>
+          <div class="pb-6 text-on-surface-variant leading-relaxed">Google returns blog posts, forum threads, and outdated SEO pages. AVL Copilot reads manufacturer manuals first-hand and walks you through a diagnostic sequence, asking the follow-up questions a Tier 3 tech would ask. Skip the tab-jumping and the PDF scrolling.</div>
         </details>
         <!-- Q6 -->
         <details class="faq-item border-t border-b border-white/10 group">
@@ -498,8 +501,7 @@
             <span class="text-lg md:text-xl font-headline font-bold pr-6">Is there a free trial?</span>
             <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
           </summary>
-          <!-- TODO: replace placeholder answer -->
-          <div class="pb-6 text-on-surface-variant leading-relaxed">TODO</div>
+          <div class="pb-6 text-on-surface-variant leading-relaxed">Yes. New users get full access during onboarding so you can put it through real troubleshooting before deciding. Final pricing details land soon. Join the waitlist to get notified.</div>
         </details>
       </div>
     </div>
