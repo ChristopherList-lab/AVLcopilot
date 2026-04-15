@@ -256,6 +256,78 @@ h1:hover, h2:hover, h3:hover {
 .typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
+/* Pricing 3D stack carousel */
+.pricing-stack {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+.pricing-stack .stack-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(100%, 420px);
+  transform: translate(-50%, 0) translateZ(0) scale(1);
+  opacity: 1;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+/* State classes set by JS based on offset from active card */
+.pricing-stack .stack-card[data-pos="0"] {
+  transform: translate(-50%, 0) translateZ(0) scale(1);
+  opacity: 1;
+  z-index: 30;
+  pointer-events: auto;
+}
+.pricing-stack .stack-card[data-pos="1"] {
+  transform: translate(calc(-50% + 70px), 30px) translateZ(-120px) scale(0.88);
+  opacity: 0.55;
+  z-index: 20;
+  pointer-events: none;
+}
+.pricing-stack .stack-card[data-pos="-1"] {
+  transform: translate(calc(-50% - 70px), 30px) translateZ(-120px) scale(0.88);
+  opacity: 0.55;
+  z-index: 20;
+  pointer-events: none;
+}
+.pricing-stack .stack-card[data-pos="2"] {
+  transform: translate(calc(-50% + 130px), 55px) translateZ(-240px) scale(0.78);
+  opacity: 0.25;
+  z-index: 10;
+  pointer-events: none;
+}
+.pricing-stack .stack-card[data-pos="-2"] {
+  transform: translate(calc(-50% - 130px), 55px) translateZ(-240px) scale(0.78);
+  opacity: 0.25;
+  z-index: 10;
+  pointer-events: none;
+}
+.pricing-stack .stack-card[data-pos="hidden"] {
+  transform: translate(-50%, 80px) translateZ(-360px) scale(0.7);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pricing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background 0.2s, width 0.2s;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.pricing-dot.is-active {
+  background: #D4FF00;
+  width: 24px;
+}
+
 /* Fade-in on scroll */
 .fade-in-up {
   opacity: 0;
