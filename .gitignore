@@ -1,0 +1,13 @@
+# Local dev tooling (Claude Code preview server, hardcoded paths)
+.claude/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
