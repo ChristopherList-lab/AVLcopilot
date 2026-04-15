@@ -562,55 +562,152 @@
         <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-headline font-black tracking-tighter leading-[0.95]">Questions, answered.</h2>
       </div>
 
-      <div>
-        <!-- Q1 -->
-        <details class="faq-item border-t border-white/10 group">
-          <summary class="flex items-center justify-between py-6 cursor-pointer hover:text-primary transition-colors">
-            <span class="text-lg md:text-xl font-headline font-bold pr-6">How does AVL Copilot know about my specific equipment?</span>
-            <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
-          </summary>
-          <div class="pb-6 text-on-surface-variant leading-relaxed">We've indexed over 5,000 product manuals from major AVL manufacturers: Yamaha, Allen &amp; Heath, Shure, ETC, Chamsys, Resolume, and many more. Tell the AI your make and model and it pulls from the relevant documentation. Don't know the model? Upload a photo of the equipment label and it figures it out.</div>
-        </details>
-        <!-- Q2 -->
-        <details class="faq-item border-t border-white/10 group">
-          <summary class="flex items-center justify-between py-6 cursor-pointer hover:text-primary transition-colors">
-            <span class="text-lg md:text-xl font-headline font-bold pr-6">Can I use it during a live event?</span>
-            <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
-          </summary>
-          <div class="pb-6 text-on-surface-variant leading-relaxed">Yes. Response times average 2 to 4 seconds, fast enough to use mid-show. Pull it up on your phone at FOH, run multiple troubleshooting threads at once, and switch between issues without losing context. Built for the pace of live work.</div>
-        </details>
-        <!-- Q3 -->
-        <details class="faq-item border-t border-white/10 group">
-          <summary class="flex items-center justify-between py-6 cursor-pointer hover:text-primary transition-colors">
-            <span class="text-lg md:text-xl font-headline font-bold pr-6">What happens if the AI can't solve my problem?</span>
-            <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
-          </summary>
-          <div class="pb-6 text-on-surface-variant leading-relaxed">Hit the escalate button and your conversation routes to a human at Maybeck. They get the full thread context, so you don't have to repeat yourself. No tier walls or scripted callback queues.</div>
-        </details>
-        <!-- Q4 -->
-        <details class="faq-item border-t border-white/10 group">
-          <summary class="flex items-center justify-between py-6 cursor-pointer hover:text-primary transition-colors">
-            <span class="text-lg md:text-xl font-headline font-bold pr-6">Is my conversation history private?</span>
-            <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
-          </summary>
-          <div class="pb-6 text-on-surface-variant leading-relaxed">Your conversations are tied to your account and not shared with other users. Thumbs-up/down ratings help us improve the model, but individual chat content isn't sold or shared with third parties. The manufacturer documentation we index is publicly available material.</div>
-        </details>
-        <!-- Q5 -->
-        <details class="faq-item border-t border-white/10 group">
-          <summary class="flex items-center justify-between py-6 cursor-pointer hover:text-primary transition-colors">
-            <span class="text-lg md:text-xl font-headline font-bold pr-6">How is this different from Googling product manuals?</span>
-            <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
-          </summary>
-          <div class="pb-6 text-on-surface-variant leading-relaxed">Google returns blog posts, forum threads, and outdated SEO pages. AVL Copilot reads manufacturer manuals first-hand and walks you through a diagnostic sequence, asking the follow-up questions a Tier 3 tech would ask. Skip the tab-jumping and the PDF scrolling.</div>
-        </details>
-        <!-- Q6 -->
-        <details class="faq-item border-t border-b border-white/10 group">
-          <summary class="flex items-center justify-between py-6 cursor-pointer hover:text-primary transition-colors">
-            <span class="text-lg md:text-xl font-headline font-bold pr-6">Is there a free trial?</span>
-            <span class="material-symbols-outlined text-on-surface-variant faq-chevron transition-transform flex-shrink-0">expand_more</span>
-          </summary>
-          <div class="pb-6 text-on-surface-variant leading-relaxed">Yes. New users get full access during onboarding so you can put it through real troubleshooting before deciding. Final pricing details land soon. Join the waitlist to get notified.</div>
-        </details>
+      <!-- Chat-style interactive FAQ: click a question to reveal the AI answer -->
+      <div class="bg-surface-container-low border border-white/10 shadow-2xl">
+        <!-- Title bar -->
+        <div class="flex items-center gap-2 px-5 py-3 border-b border-white/5 bg-surface-container-high">
+          <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+          <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+          <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+          <span class="ml-3 font-mono text-[11px] uppercase tracking-widest text-on-surface-variant">AVL CoPilot &mdash; Tap a question</span>
+        </div>
+
+        <!-- Messages -->
+        <div id="faq-messages" class="p-5 md:p-8 space-y-6 md:space-y-7">
+          <!-- Q1 -->
+          <div class="faq-pair space-y-3">
+            <div class="flex justify-start">
+              <button type="button" aria-expanded="false" class="faq-q group max-w-[85%] text-left bg-surface-container-high border border-white/10 px-4 py-3 text-sm md:text-base leading-relaxed hover:border-primary/50 hover:text-primary transition-colors cursor-pointer">
+                How does AVL Copilot know about my specific equipment?
+              </button>
+            </div>
+            <div class="faq-a-wrap hidden">
+              <div class="faq-typing flex justify-end">
+                <div class="bg-primary/10 border border-primary/30 px-4 py-3 flex items-center gap-1.5">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
+              <div class="faq-a flex justify-end hidden">
+                <div class="max-w-[85%] bg-primary/10 border border-primary/30 px-4 py-3 text-sm md:text-base leading-relaxed">
+                  We've indexed over 5,000 product manuals from major AVL manufacturers: Yamaha, Allen &amp; Heath, Shure, ETC, Chamsys, Resolume, and many more. Tell the AI your make and model and it pulls from the relevant documentation. Don't know the model? Upload a photo of the equipment label and it figures it out.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="faq-pair space-y-3">
+            <div class="flex justify-start">
+              <button type="button" aria-expanded="false" class="faq-q group max-w-[85%] text-left bg-surface-container-high border border-white/10 px-4 py-3 text-sm md:text-base leading-relaxed hover:border-primary/50 hover:text-primary transition-colors cursor-pointer">
+                Can I use it during a live event?
+              </button>
+            </div>
+            <div class="faq-a-wrap hidden">
+              <div class="faq-typing flex justify-end">
+                <div class="bg-primary/10 border border-primary/30 px-4 py-3 flex items-center gap-1.5">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
+              <div class="faq-a flex justify-end hidden">
+                <div class="max-w-[85%] bg-primary/10 border border-primary/30 px-4 py-3 text-sm md:text-base leading-relaxed">
+                  Yes. Response times average 2 to 4 seconds, fast enough to use mid-show. Pull it up on your phone at FOH, run multiple troubleshooting threads at once, and switch between issues without losing context. Built for the pace of live work.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="faq-pair space-y-3">
+            <div class="flex justify-start">
+              <button type="button" aria-expanded="false" class="faq-q group max-w-[85%] text-left bg-surface-container-high border border-white/10 px-4 py-3 text-sm md:text-base leading-relaxed hover:border-primary/50 hover:text-primary transition-colors cursor-pointer">
+                What happens if the AI can't solve my problem?
+              </button>
+            </div>
+            <div class="faq-a-wrap hidden">
+              <div class="faq-typing flex justify-end">
+                <div class="bg-primary/10 border border-primary/30 px-4 py-3 flex items-center gap-1.5">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
+              <div class="faq-a flex justify-end hidden">
+                <div class="max-w-[85%] bg-primary/10 border border-primary/30 px-4 py-3 text-sm md:text-base leading-relaxed">
+                  Hit the escalate button and your conversation routes to a human at Maybeck. They get the full thread context, so you don't have to repeat yourself. No tier walls or scripted callback queues.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="faq-pair space-y-3">
+            <div class="flex justify-start">
+              <button type="button" aria-expanded="false" class="faq-q group max-w-[85%] text-left bg-surface-container-high border border-white/10 px-4 py-3 text-sm md:text-base leading-relaxed hover:border-primary/50 hover:text-primary transition-colors cursor-pointer">
+                Is my conversation history private?
+              </button>
+            </div>
+            <div class="faq-a-wrap hidden">
+              <div class="faq-typing flex justify-end">
+                <div class="bg-primary/10 border border-primary/30 px-4 py-3 flex items-center gap-1.5">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
+              <div class="faq-a flex justify-end hidden">
+                <div class="max-w-[85%] bg-primary/10 border border-primary/30 px-4 py-3 text-sm md:text-base leading-relaxed">
+                  Your conversations are tied to your account and not shared with other users. Thumbs-up/down ratings help us improve the model, but individual chat content isn't sold or shared with third parties. The manufacturer documentation we index is publicly available material.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="faq-pair space-y-3">
+            <div class="flex justify-start">
+              <button type="button" aria-expanded="false" class="faq-q group max-w-[85%] text-left bg-surface-container-high border border-white/10 px-4 py-3 text-sm md:text-base leading-relaxed hover:border-primary/50 hover:text-primary transition-colors cursor-pointer">
+                How is this different from Googling product manuals?
+              </button>
+            </div>
+            <div class="faq-a-wrap hidden">
+              <div class="faq-typing flex justify-end">
+                <div class="bg-primary/10 border border-primary/30 px-4 py-3 flex items-center gap-1.5">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
+              <div class="faq-a flex justify-end hidden">
+                <div class="max-w-[85%] bg-primary/10 border border-primary/30 px-4 py-3 text-sm md:text-base leading-relaxed">
+                  Google returns blog posts, forum threads, and outdated SEO pages. AVL Copilot reads manufacturer manuals first-hand and walks you through a diagnostic sequence, asking the follow-up questions a Tier 3 tech would ask. Skip the tab-jumping and the PDF scrolling.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="faq-pair space-y-3">
+            <div class="flex justify-start">
+              <button type="button" aria-expanded="false" class="faq-q group max-w-[85%] text-left bg-surface-container-high border border-white/10 px-4 py-3 text-sm md:text-base leading-relaxed hover:border-primary/50 hover:text-primary transition-colors cursor-pointer">
+                Is there a free trial?
+              </button>
+            </div>
+            <div class="faq-a-wrap hidden">
+              <div class="faq-typing flex justify-end">
+                <div class="bg-primary/10 border border-primary/30 px-4 py-3 flex items-center gap-1.5">
+                  <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                </div>
+              </div>
+              <div class="faq-a flex justify-end hidden">
+                <div class="max-w-[85%] bg-primary/10 border border-primary/30 px-4 py-3 text-sm md:text-base leading-relaxed">
+                  Yes. New users get full access during onboarding so you can put it through real troubleshooting before deciding. Final pricing details land soon. Join the waitlist to get notified.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input bar linking to contact -->
+        <div class="border-t border-white/5 px-4 py-3 flex items-center gap-3 bg-surface-container-high">
+          <a href="contact.html" class="flex-1 text-left text-sm text-on-surface-variant/70 font-mono hover:text-primary transition-colors">Still have questions? Ask us directly...</a>
+          <a href="contact.html" aria-label="Send a question" class="w-9 h-9 bg-primary flex items-center justify-center text-black hover:bg-white transition-all rounded-full">
+            <span class="material-symbols-outlined text-lg">arrow_upward</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -738,6 +835,42 @@
     switchBtn.addEventListener('click', () => {
       const isYearly = yearlyBtn.getAttribute('aria-pressed') === 'true';
       setCycle(isYearly ? 'monthly' : 'yearly');
+    });
+  })();
+
+  // FAQ: click a question -> typing dots -> answer reveal
+  (function() {
+    const pairs = document.querySelectorAll('.faq-pair');
+    if (!pairs.length) return;
+
+    pairs.forEach(pair => {
+      const btn = pair.querySelector('.faq-q');
+      const wrap = pair.querySelector('.faq-a-wrap');
+      const typing = pair.querySelector('.faq-typing');
+      const answer = pair.querySelector('.faq-a');
+      if (!btn || !wrap || !typing || !answer) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          // Collapse
+          btn.setAttribute('aria-expanded', 'false');
+          wrap.classList.add('hidden');
+          answer.classList.add('hidden');
+          typing.classList.remove('hidden');
+          return;
+        }
+        // Expand: show typing first, then swap to answer
+        btn.setAttribute('aria-expanded', 'true');
+        wrap.classList.remove('hidden');
+        typing.classList.remove('hidden');
+        answer.classList.add('hidden');
+        setTimeout(() => {
+          typing.classList.add('hidden');
+          answer.classList.remove('hidden');
+          answer.classList.add('faq-a-in');
+        }, 700);
+      });
     });
   })();
 

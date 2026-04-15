@@ -328,6 +328,15 @@ h1:hover, h2:hover, h3:hover {
   width: 24px;
 }
 
+/* FAQ answer reveal animation */
+@keyframes faq-a-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.faq-a-in {
+  animation: faq-a-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Feature category tabs */
 .feature-tab {
   background: #18181b;
