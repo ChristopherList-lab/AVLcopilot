@@ -260,7 +260,7 @@ h1:hover, h2:hover, h3:hover {
 .pricing-stack {
   position: relative;
   width: 100%;
-  min-height: 620px;
+  min-height: 560px;
   perspective: 1400px;
   transform-style: preserve-3d;
 }
