@@ -328,6 +328,34 @@ h1:hover, h2:hover, h3:hover {
   width: 24px;
 }
 
+/* Feature category tabs */
+.feature-tab {
+  background: #18181b;
+  border-color: rgba(255, 255, 255, 0.10);
+  color: #A1A1AA;
+  cursor: pointer;
+}
+.feature-tab:hover {
+  border-color: rgba(212, 255, 0, 0.4);
+  color: #D4FF00;
+}
+.feature-tab.is-active {
+  background: #D4FF00;
+  border-color: #D4FF00;
+  color: #000;
+}
+
+/* Feature card entry: drop down with a light bounce, staggered via --i */
+@keyframes feature-card-drop {
+  0%   { opacity: 0; transform: translateY(-24px) scale(0.97); }
+  60%  { opacity: 1; transform: translateY(5px)   scale(1.01); }
+  100% { opacity: 1; transform: translateY(0)     scale(1); }
+}
+.feature-card.is-visible {
+  animation: feature-card-drop 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+
 /* Fade-in on scroll */
 .fade-in-up {
   opacity: 0;

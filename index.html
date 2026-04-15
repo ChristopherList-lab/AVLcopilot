@@ -241,7 +241,7 @@
   </section>
 
   <!-- Features -->
-  <section id="features" class="py-24 md:py-32 px-6 md:px-12 border-b border-white/5">
+  <section id="features" class="py-24 md:py-32 px-6 md:px-12">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-16 max-w-3xl">
         <div class="font-mono text-[11px] tracking-[0.3em] text-primary uppercase mb-5">// Built with purpose</div>
@@ -249,9 +249,16 @@
         <p class="text-lg text-on-surface-variant">From the one-man show to the multi-site tech team, AVL CoPilot meets your people where they are.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Category tabs -->
+      <div role="tablist" aria-label="Feature categories" class="flex flex-wrap justify-center gap-2 mb-10">
+        <button type="button" role="tab" aria-selected="true" data-tab="ai" class="feature-tab is-active font-mono text-[11px] uppercase tracking-widest px-5 py-2.5 rounded-full border transition-colors">AI &amp; Diagnosis</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="knowledge" class="feature-tab font-mono text-[11px] uppercase tracking-widest px-5 py-2.5 rounded-full border transition-colors">Knowledge &amp; Context</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="ops" class="feature-tab font-mono text-[11px] uppercase tracking-widest px-5 py-2.5 rounded-full border transition-colors">Operations</button>
+      </div>
+
+      <div id="features-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" role="tabpanel">
         <!-- 1. Expert Troubleshooting -->
-        <div class="bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors fade-in-up">
+        <div class="feature-card bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors" data-category="ai">
           <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-primary">psychology</span>
           </div>
@@ -259,15 +266,23 @@
           <p class="text-xs text-on-surface-variant leading-relaxed">Ask anything. Mic cuts out, screens go black, signal chain mysteries. AVL Copilot walks your team through the fix and teaches you how to solve it the next time.</p>
         </div>
         <!-- 2. Photo Diagnosis -->
-        <div class="bg-surface-container-low border border-white/5 p-8 hover:border-primary/30 transition-colors fade-in-up" data-delay="60">
+        <div class="feature-card bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors" data-category="ai">
           <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-primary">photo_camera</span>
           </div>
           <h3 class="text-base font-headline font-bold mb-2">Photo Diagnosis</h3>
           <p class="text-xs text-on-surface-variant leading-relaxed">Point your phone at the problem. Upload a photo of a fixture, a cable, a rack, or a cryptic error screen, and AVL Copilot guides you to the solution.</p>
         </div>
+        <!-- 9. Overdrive -->
+        <div class="feature-card bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors" data-category="ai">
+          <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-primary">rocket_launch</span>
+          </div>
+          <h3 class="text-base font-headline font-bold mb-2">Overdrive</h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed">Every question runs through five LLMs in parallel. Their answers feed into our own model to return one sharper response, not five conflicting ones.</p>
+        </div>
         <!-- 3. 5,000+ Product Library -->
-        <div class="bg-surface-container-low border border-white/5 p-8 hover:border-primary/30 transition-colors fade-in-up" data-delay="120">
+        <div class="feature-card bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors" data-category="knowledge">
           <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-primary">menu_book</span>
           </div>
@@ -275,15 +290,23 @@
           <p class="text-xs text-on-surface-variant leading-relaxed">Deep knowledge of the gear you actually own. From small church setups to multi-site installs. AVL Copilot is grounded in real manufacturer documentation. No forum guesses. No frantic web searches.</p>
         </div>
         <!-- 4. Knows Your Room -->
-        <div class="bg-surface-container-low border border-white/5 p-8 hover:border-primary/30 transition-colors fade-in-up" data-delay="180">
+        <div class="feature-card bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors" data-category="knowledge">
           <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-primary">home_work</span>
           </div>
           <h3 class="text-base font-headline font-bold mb-2">Knows Your Room</h3>
           <p class="text-xs text-on-surface-variant leading-relaxed">Load your rig into AVL Copilot and it learns your specific setup — every console, fixture, and signal path. Answers stop being generic and start being about your system.</p>
         </div>
+        <!-- 7. Custom SOPs -->
+        <div class="feature-card bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors" data-category="knowledge">
+          <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-primary">fact_check</span>
+          </div>
+          <h3 class="text-base font-headline font-bold mb-2">Custom SOPs</h3>
+          <p class="text-xs text-on-surface-variant leading-relaxed">Upload your own procedures and AVL CoPilot learns them. When a volunteer asks "how do I power on the sound system?", they get your answer — the one your tech lead already wrote. Ask once, answer forever.</p>
+        </div>
         <!-- 5. Repair Routing -->
-        <div class="bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors fade-in-up">
+        <div class="feature-card bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors" data-category="ops">
           <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-primary">handyman</span>
           </div>
@@ -291,36 +314,20 @@
           <p class="text-xs text-on-surface-variant leading-relaxed">When something breaks, AVL Copilot tells you what you can fix yourself and when to call in help. Whether that's the manufacturer or a qualified local partner. No more Googling "[brand] service near me" at 9 p.m.</p>
         </div>
         <!-- 6. Human Escalation -->
-        <div class="bg-surface-container-low border border-white/5 p-8 hover:border-primary/30 transition-colors fade-in-up" data-delay="60">
+        <div class="feature-card bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors" data-category="ops">
           <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-primary">support_agent</span>
           </div>
           <h3 class="text-base font-headline font-bold mb-2">Human Escalation</h3>
           <p class="text-xs text-on-surface-variant leading-relaxed">When you need a real person, you get one. Escalate any conversation to our team with full thread context intact. No repeating yourself, no starting over.</p>
         </div>
-        <!-- 7. Custom SOPs -->
-        <div class="bg-surface-container-low border border-white/5 p-8 hover:border-primary/30 transition-colors fade-in-up" data-delay="120">
-          <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
-            <span class="material-symbols-outlined text-primary">fact_check</span>
-          </div>
-          <h3 class="text-base font-headline font-bold mb-2">Custom SOPs</h3>
-          <p class="text-xs text-on-surface-variant leading-relaxed">Upload your own procedures and AVL CoPilot learns them. When a volunteer asks "how do I power on the sound system?", they get your answer — the one your tech lead already wrote. Ask once, answer forever.</p>
-        </div>
         <!-- 8. Inventory Management -->
-        <div class="bg-surface-container-low border border-white/5 p-8 hover:border-primary/30 transition-colors fade-in-up" data-delay="180">
+        <div class="feature-card bg-surface-container-low border border-white/5 p-6 hover:border-primary/30 transition-colors" data-category="ops">
           <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-primary">inventory_2</span>
           </div>
           <h3 class="text-base font-headline font-bold mb-2">Inventory Management</h3>
           <p class="text-xs text-on-surface-variant leading-relaxed">Every piece of gear, every location, every service record in one place. Finally know what you own, where it lives, and when it was last serviced.</p>
-        </div>
-        <!-- 9. Overdrive -->
-        <div class="bg-surface-container-low border border-white/5 p-8 hover:border-primary/30 transition-colors fade-in-up" data-delay="240">
-          <div class="w-10 h-10 bg-primary/15 border border-primary/20 flex items-center justify-center mb-4">
-            <span class="material-symbols-outlined text-primary">rocket_launch</span>
-          </div>
-          <h3 class="text-base font-headline font-bold mb-2">Overdrive</h3>
-          <p class="text-xs text-on-surface-variant leading-relaxed">Every question runs through five LLMs in parallel. Their answers feed into our own model to return one sharper response, not five conflicting ones.</p>
         </div>
       </div>
     </div>
@@ -328,7 +335,12 @@
 
   <!-- How It Works -->
   <section id="how-it-works" class="relative py-24 md:py-32 px-6 md:px-12 bg-surface-container-lowest overflow-hidden">
-    <!-- Blueprint-grid pattern with radial mask so lines fade at section edges -->
+    <!-- Smooth bg blend into the Features section above (no hard line) -->
+    <div class="absolute top-0 left-0 right-0 h-40 pointer-events-none" aria-hidden="true" style="background: linear-gradient(to bottom, #09090B 0%, transparent 100%);"></div>
+    <!-- Smooth bg blend into the Pricing section below -->
+    <div class="absolute bottom-0 left-0 right-0 h-40 pointer-events-none" aria-hidden="true" style="background: linear-gradient(to top, #111113 0%, transparent 100%);"></div>
+
+    <!-- Blueprint-grid pattern with gentler radial mask -->
     <div
       class="absolute inset-0 opacity-[0.14] pointer-events-none"
       aria-hidden="true"
@@ -337,8 +349,8 @@
           linear-gradient(to right, #fff 1px, transparent 1px),
           linear-gradient(to bottom, #fff 1px, transparent 1px);
         background-size: 80px 80px;
-        -webkit-mask-image: radial-gradient(ellipse 55% 55% at center, #000 0%, transparent 85%);
-                mask-image: radial-gradient(ellipse 55% 55% at center, #000 0%, transparent 85%);
+        -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, #000 30%, transparent 100%);
+                mask-image: radial-gradient(ellipse 85% 85% at center, #000 30%, transparent 100%);
       "
     ></div>
     <!-- Soft corner vignette for depth -->
@@ -720,6 +732,48 @@
       const isYearly = yearlyBtn.getAttribute('aria-pressed') === 'true';
       setCycle(isYearly ? 'monthly' : 'yearly');
     });
+  })();
+
+  // Feature category tabs
+  (function() {
+    const tabs = document.querySelectorAll('.feature-tab');
+    const cards = document.querySelectorAll('.feature-card');
+    if (!tabs.length || !cards.length) return;
+
+    function setActive(tab) {
+      const cat = tab.dataset.tab;
+      tabs.forEach(t => {
+        const active = t === tab;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', String(active));
+      });
+      let visibleIdx = 0;
+      cards.forEach(card => {
+        const match = card.dataset.category === cat;
+        card.classList.toggle('hidden', !match);
+        if (match) {
+          card.style.setProperty('--i', String(visibleIdx++));
+          card.classList.remove('is-visible');
+          void card.offsetWidth;
+          card.classList.add('is-visible');
+        }
+      });
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => setActive(tab));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const dir = e.key === 'ArrowRight' ? 1 : -1;
+          const next = tabs[(i + dir + tabs.length) % tabs.length];
+          next.focus();
+          setActive(next);
+        }
+      });
+    });
+
+    setActive(tabs[0]);
   })();
 
   // Pricing 3D stacked carousel
