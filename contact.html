@@ -160,41 +160,51 @@
           <div class="font-mono text-[11px] tracking-[0.3em] text-primary uppercase mb-3">// Early Access</div>
           <h2 class="text-2xl md:text-3xl font-headline font-black tracking-tight mb-10">Request access</h2>
 
-          <form id="waitlist-form" class="space-y-7">
+          <form id="waitlist-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-7">
+            <!-- Web3Forms integration -->
+            <input type="hidden" name="access_key" value="3a943262-8661-4dce-8ffe-5b5e26e13ea6">
+            <input type="hidden" name="subject" value="New AVL Copilot waitlist signup">
+            <input type="hidden" name="from_name" value="AVL Copilot Waitlist">
+            <!-- Honeypot: bots check it, humans never see it -->
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
             <div>
               <label for="name" class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Your name" class="w-full bg-surface border border-white/10 px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 font-mono text-sm focus:border-primary focus:outline-none focus:ring-0 transition-colors">
+              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name" class="w-full bg-surface border border-white/10 px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 font-mono text-sm focus:border-primary focus:outline-none focus:ring-0 transition-colors">
+            </div>
+
+            <div>
+              <label for="organization" class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Organization</label>
+              <input type="text" id="organization" name="organization" required autocomplete="organization" placeholder="Church, production company, or venue" class="w-full bg-surface border border-white/10 px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 font-mono text-sm focus:border-primary focus:outline-none focus:ring-0 transition-colors">
             </div>
 
             <div>
               <label for="email" class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Email</label>
-              <input type="email" id="email" name="email" required placeholder="you@company.com" class="w-full bg-surface border border-white/10 px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 font-mono text-sm focus:border-primary focus:outline-none focus:ring-0 transition-colors">
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com" class="w-full bg-surface border border-white/10 px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 font-mono text-sm focus:border-primary focus:outline-none focus:ring-0 transition-colors">
             </div>
 
             <div>
-              <label for="role" class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Role</label>
-              <input type="text" id="role" name="role" placeholder="Audio engineer, LD, systems integrator..." class="w-full bg-surface border border-white/10 px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 font-mono text-sm focus:border-primary focus:outline-none focus:ring-0 transition-colors">
+              <label for="phone" class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Phone</label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(555) 555-0123" class="w-full bg-surface border border-white/10 px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 font-mono text-sm focus:border-primary focus:outline-none focus:ring-0 transition-colors">
             </div>
 
             <div>
-              <label class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">What do you work on? <span class="text-on-surface-variant/40">(optional)</span></label>
-              <div class="flex flex-wrap gap-3">
-                <label class="chip-toggle inline-flex items-center gap-2 px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface-variant bg-surface border border-white/10 hover:border-primary/50 transition-all">
-                  <input type="checkbox" name="coverage" value="Audio">
-                  <span>Audio</span>
-                </label>
-                <label class="chip-toggle inline-flex items-center gap-2 px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface-variant bg-surface border border-white/10 hover:border-primary/50 transition-all">
-                  <input type="checkbox" name="coverage" value="Video">
-                  <span>Video</span>
-                </label>
-                <label class="chip-toggle inline-flex items-center gap-2 px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface-variant bg-surface border border-white/10 hover:border-primary/50 transition-all">
-                  <input type="checkbox" name="coverage" value="Lighting">
-                  <span>Lighting</span>
-                </label>
-                <label class="chip-toggle inline-flex items-center gap-2 px-4 py-2 font-mono text-xs uppercase tracking-wider text-on-surface-variant bg-surface border border-white/10 hover:border-primary/50 transition-all">
-                  <input type="checkbox" name="coverage" value="Integration">
-                  <span>Integration</span>
-                </label>
+              <label for="feature" class="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-3">Feature of interest</label>
+              <div class="relative">
+                <select id="feature" name="feature" required class="appearance-none w-full bg-surface border border-white/10 px-4 py-3 pr-10 text-on-surface font-mono text-sm focus:border-primary focus:outline-none focus:ring-0 transition-colors">
+                  <option value="" disabled selected>Pick one...</option>
+                  <option value="Expert Troubleshooting">Expert Troubleshooting</option>
+                  <option value="Photo Diagnosis">Photo Diagnosis</option>
+                  <option value="Overdrive">Overdrive (multi-LLM answers)</option>
+                  <option value="Product Library">5,000+ Product Library</option>
+                  <option value="Knows Your Room">Knows Your Room</option>
+                  <option value="Custom SOPs">Custom SOPs</option>
+                  <option value="Repair Routing">Repair Routing</option>
+                  <option value="Human Escalation">Human Escalation</option>
+                  <option value="Inventory Management">Inventory Management</option>
+                  <option value="Not sure / all of them">Not sure / all of them</option>
+                </select>
+                <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
               </div>
             </div>
 
@@ -277,42 +287,29 @@
     });
   }
 
-  // Chip toggle handler
-  document.querySelectorAll('.chip-toggle').forEach(chip => {
-    chip.addEventListener('click', (e) => {
-      if (e.target.tagName !== 'INPUT') {
-        e.preventDefault();
-        const cb = chip.querySelector('input[type="checkbox"]');
-        cb.checked = !cb.checked;
-        chip.classList.toggle('is-selected', cb.checked);
-      }
-    });
-  });
-
-  // Form handling — placeholder endpoint; swap with real Formspree/Apps Script URL
-  const FORM_ENDPOINT = '';
+  // Waitlist form -> Web3Forms
+  const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
   const form = document.getElementById('waitlist-form');
   const submitBtn = document.getElementById('submit-btn');
   const formStatus = document.getElementById('form-status');
+
+  function showStatus(kind, text) {
+    formStatus.textContent = text;
+    formStatus.className = `form-status--${kind} p-4 font-mono text-xs uppercase tracking-wider text-center`;
+    formStatus.classList.remove('hidden');
+  }
 
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const name = form.querySelector('#name').value.trim();
-      const email = form.querySelector('#email').value.trim();
-      const role = form.querySelector('#role').value.trim();
-      const message = form.querySelector('#message').value.trim();
+      const payload = Object.fromEntries(new FormData(form).entries());
 
-      if (!name || !email) {
-        formStatus.textContent = 'Name and email are required.';
-        formStatus.className = 'form-status--error p-4 font-mono text-xs uppercase tracking-wider text-center';
-        formStatus.classList.remove('hidden');
+      // Minimal client-side guard (server validates too)
+      if (!payload.name || !payload.email) {
+        showStatus('error', 'Name and email are required.');
         return;
       }
-
-      const coverage = [];
-      form.querySelectorAll('input[name="coverage"]:checked').forEach(cb => coverage.push(cb.value));
 
       const originalText = submitBtn.textContent;
       submitBtn.textContent = 'Submitting...';
@@ -320,30 +317,25 @@
       submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
       formStatus.classList.add('hidden');
 
-      const payload = { name, email, role, coverage, message };
-
       try {
-        if (FORM_ENDPOINT) {
-          await fetch(FORM_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-            mode: 'no-cors'
-          });
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({ success: false, message: 'Unexpected response' }));
+
+        if (res.ok && data.success) {
+          showStatus('success', 'You\u2019re on the list. Check your inbox within 24 hours.');
+          form.reset();
         } else {
-          await new Promise(r => setTimeout(r, 1000));
+          showStatus('error', data.message || 'Submission failed. Try again or email us directly.');
         }
-
-        formStatus.textContent = 'You\u2019re on the list. Check your inbox within 24 hours.';
-        formStatus.className = 'form-status--success p-4 font-mono text-xs uppercase tracking-wider text-center';
-        formStatus.classList.remove('hidden');
-
-        form.reset();
-        document.querySelectorAll('.chip-toggle').forEach(c => c.classList.remove('is-selected'));
       } catch (err) {
-        formStatus.textContent = 'Submission failed. Try again or email us directly.';
-        formStatus.className = 'form-status--error p-4 font-mono text-xs uppercase tracking-wider text-center';
-        formStatus.classList.remove('hidden');
+        showStatus('error', 'Network error. Try again or email support@maybeck.com.');
       } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
