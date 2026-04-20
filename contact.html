@@ -291,8 +291,9 @@
     });
   }
 
-  // Waitlist form -> Web3Forms
+  // Waitlist form -> Web3Forms (email) + Google Sheets
   const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+  const SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycby1245uTHzurv_sS4SZsCxjd-CzS88GaULYurW1y-4nWxr74yVi7d1eas7-q7_zPxNT5w/exec';
   const form = document.getElementById('waitlist-form');
   const submitBtn = document.getElementById('submit-btn');
   const formStatus = document.getElementById('form-status');
@@ -322,15 +323,21 @@
       formStatus.classList.add('hidden');
 
       try {
-        const res = await fetch(FORM_ENDPOINT, {
+        const web3Promise = fetch(FORM_ENDPOINT, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
           body: JSON.stringify(payload)
-        });
-        const data = await res.json().catch(() => ({ success: false, message: 'Unexpected response' }));
+        }).then(r => r.json()).catch(() => ({ success: false, message: 'Unexpected response' }));
+
+        const sheetsPromise = SHEETS_ENDPOINT && !SHEETS_ENDPOINT.startsWith('PASTE_')
+          ? fetch(SHEETS_ENDPOINT, { method: 'POST', body: new FormData(form) }).catch(() => null)
+          : Promise.resolve(null);
+
+        const [data] = await Promise.all([web3Promise, sheetsPromise]);
+        const res = { ok: !!data.success };
 
         if (res.ok && data.success) {
           showStatus('success', 'You\u2019re on the list. Check your inbox within 24 hours.');
